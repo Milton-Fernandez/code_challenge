@@ -3,7 +3,7 @@ import {useSelector} from 'react-redux';
 import { useDispatch } from 'react-redux';
 import Container from 'react-bootstrap/Container'
 import Table from 'react-bootstrap/Table'
-
+import Button from 'react-bootstrap/Button'
 const ReviewTableRow = ({review}) =>{
     const dispatch = useDispatch();
     const [edit, setEdit] = useState(false);
@@ -33,7 +33,7 @@ const ReviewTableRow = ({review}) =>{
     return(
         <>
             <tr>
-                <td>{review.image}</td>
+                <td><img src={review.image} width="300" height="400"></img></td>
                 <td>{review.title}</td>
                 <td>{review.author}</td>
 
@@ -49,14 +49,14 @@ const ReviewTableRow = ({review}) =>{
                 </>
                 }
                     {!edit ?
-                        <td><button onClick={event => handleEdit()} >edit</button></td>
+                        <td><Button onClick={event => handleEdit()} >edit</Button></td>
                         :
-                        <td><button   onClick={event => handleExit()}>Exit Edit</button><button onClick={editSubmit}>Save Changes</button></td>
+                        <td><Button   onClick={event => handleExit()}>Exit Edit</Button><Button onClick={editSubmit}>Save Changes</Button></td>
                         }
-                <td><button onClick={() => {
+                <td><Button onClick={() => {
                         console.log(review.id);
                         dispatch({ type: 'REMOVE_REVIEW', payload: review.id });
-                        dispatch({ type: 'FETCH_REVIEW' });}}>delete</button></td>
+                        dispatch({ type: 'FETCH_REVIEW' });}}>delete</Button></td>
             </tr>
         </>
     )
