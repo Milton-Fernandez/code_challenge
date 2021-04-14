@@ -4,7 +4,8 @@ import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 import Form from 'react-bootstrap/Form'
-
+import StarRating from '../StarRating/StarRating'
+import "./Book.css";
 function MyVerticallyCenteredModal(props) {
   return (
     <Modal
@@ -20,6 +21,7 @@ function MyVerticallyCenteredModal(props) {
       </Modal.Header>
       <Modal.Body>
         <Form>
+          <StarRating />
           <Form.Group controlId="exampleForm.ControlTextarea1">
             <Form.Label>Comment</Form.Label>
               <Form.Control as="textarea" rows={3} />
