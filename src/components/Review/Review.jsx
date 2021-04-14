@@ -43,7 +43,10 @@ const Review = () =>{
                                         <td>{review.rating}</td>
                                         <td>{review.comment}</td>
                                         <td><button>edit</button></td>
-                                        <td><button>delete</button></td>
+                                        <td><button onClick={() => {
+                                            console.log(review.id);
+                                            dispatch({ type: 'REMOVE_REVIEW', payload: review.id });
+                                            dispatch({ type: 'FETCH_REVIEW' });}}>delete</button></td>
                                     </tr>
                                     </>
                             )})}
