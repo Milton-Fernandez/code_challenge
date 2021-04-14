@@ -29,11 +29,24 @@ function* removeReviewSaga(action) {
         console.log('Error in delete', error);
     };
 };
+function* updateReviewSaga(action){
+    try{
+        console.log(action.payload);
+        yield axios.put(`/api/review/update/${action.payload.id}`, action.payload)
+        yield put({ type: 'FETCH_REVIEW'});
+       
+    
+    }  catch(error){
+        console.log('error updating data',error);
+    }
+}
 
 function* reviewSaga() {
     yield takeEvery('FETCH_REVIEW', fetchReviewSaga);
     yield takeEvery('ADD_REVIEW', addReviewSaga);
     yield takeEvery('REMOVE_REVIEW', removeReviewSaga);
+    yield takeEvery('UPDATE_REVIEW',updateReviewSaga)
 }
+
 
 export default reviewSaga;

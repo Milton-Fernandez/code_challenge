@@ -2,16 +2,18 @@ import React, {useState, useEffect} from 'react'
 import {useSelector} from 'react-redux';
 import { useDispatch } from 'react-redux';
 import Container from 'react-bootstrap/Container'
-
-
 import Table from 'react-bootstrap/Table'
+import ReviewTableRow from '../ReviewTableRow/ReviewTableRow'
+
 const Review = () =>{
+
     const review = useSelector((store) => store.review);
     const dispatch = useDispatch();
     console.log(review)
   useEffect(() => {
     dispatch({ type: 'FETCH_REVIEW' });
   },[]);
+
 
   console.log(review);
     return(
@@ -36,18 +38,7 @@ const Review = () =>{
                         {review.map((review)=>{
                             return(
                                     <>
-                                    <tr>
-                                        <td>{review.image}</td>
-                                        <td>{review.title}</td>
-                                        <td>{review.author}</td>
-                                        <td>{review.rating}</td>
-                                        <td>{review.comment}</td>
-                                        <td><button>edit</button></td>
-                                        <td><button onClick={() => {
-                                            console.log(review.id);
-                                            dispatch({ type: 'REMOVE_REVIEW', payload: review.id });
-                                            dispatch({ type: 'FETCH_REVIEW' });}}>delete</button></td>
-                                    </tr>
+                                        <ReviewTableRow review={review}/>
                                     </>
                             )})}
                    
