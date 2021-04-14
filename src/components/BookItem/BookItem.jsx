@@ -5,8 +5,7 @@ import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 import Form from 'react-bootstrap/Form'
 import StarRating from '../StarRating/StarRating'
-import "./Book.css";
-import BookItem from '../BookItem/BookItem'
+
 function MyVerticallyCenteredModal(props) {
   return (
     <Modal
@@ -36,8 +35,7 @@ function MyVerticallyCenteredModal(props) {
     </Modal>
   );
 }
-
-const Book = () =>{
+const BookItem = ({book}) =>{
     const [loading, setLoading] = useState(false);
     const [articles, setArticles] = useState([]);
     const [show, setShow] = useState(false);
@@ -45,32 +43,8 @@ const Book = () =>{
     const handleShow = () => setShow(true);
     const [modalShow, setModalShow] = React.useState(false);
     const [comment, setComment] = useState('');
-
-
-    useEffect(() => {
-        const getArticles = async () => {
-            setLoading(true);
-            const res = await axios.get(`https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=nZwk50Bzk3GoGqGeejh1PfbxnmP5PdND`);
-            setArticles(res.data.results.books);
-
-            setLoading(false);
-        };
-        getArticles();
-
-    }, []);
-
-    console.log(articles);
-    
     return(
         <>
-       
-        <div>
-            <div class="container">
-                <div class="row">
-                {articles.map((book)=>{
-                    return(
-                      <>
-                      {/*
                         <div class="col-sm" id="d" id = {book.rank}>
 
                             <Card style={{ width: '18rem' }}>
@@ -88,18 +62,12 @@ const Book = () =>{
                                     </Card.Body>
                             </Card> 
                         </div>
-                    */}
-                            <BookItem book={book} />
-                        </>
-                        )})}
-                </div>
-            </div>
-        </div>
-
-
+                    <MyVerticallyCenteredModal
+                    show={modalShow}
+                    onHide={() => setModalShow(false)}
+      />
         </>
     )
 }
 
-
-export default Book;
+export default BookItem;
