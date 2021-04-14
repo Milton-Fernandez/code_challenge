@@ -1,5 +1,7 @@
 import axios from 'axios'
 import React, {useState, useEffect} from 'react'
+import {useSelector} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
@@ -24,7 +26,7 @@ function MyVerticallyCenteredModal(props) {
           <StarRating />
           <Form.Group controlId="exampleForm.ControlTextarea1">
             <Form.Label>Comment</Form.Label>
-              <Form.Control as="textarea" rows={3} />
+              <Form.Control value="comment" as="textarea" rows={3} onChange={event => setComment(event.target.value)} />
           </Form.Group>
         </Form>
       </Modal.Body>
@@ -44,6 +46,28 @@ const BookItem = ({book}) =>{
     const [modalShow, setModalShow] = React.useState(false);
     const [comment, setComment] = useState('');
     const [reviewed, setReviewed] = useState(false);
+    const user = useSelector((store) => store.user);
+    const dispatch = useDispatch();
+  
+
+ 
+    const handleSubmit = (event) =>{
+        event.preventDefault();
+        dispatch({
+            type:'ADD_REVIEW',
+            payload: {
+                user_id: user.id,
+                comment: commnet,
+                rating: 1,
+                title: book.title,
+                author: book.author,
+                image: book.book_image,
+            } 
+        });
+
+    }
+   
+
     return(
         <>
                         <div class="col-sm" id="d" id = {book.rank}>
