@@ -43,6 +43,7 @@ const BookItem = ({book}) =>{
     const handleShow = () => setShow(true);
     const [modalShow, setModalShow] = React.useState(false);
     const [comment, setComment] = useState('');
+    const [reviewed, setReviewed] = useState(false);
     return(
         <>
                         <div class="col-sm" id="d" id = {book.rank}>

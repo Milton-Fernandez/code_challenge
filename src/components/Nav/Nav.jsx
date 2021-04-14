@@ -29,8 +29,11 @@ function Nav() {
 
         {user.id && (
           <>
-
+            <Link to="review" className="navLink">
+              Review
+            </Link>
             <LogOutButton className="navLink" />
+
           </>
         )}
 

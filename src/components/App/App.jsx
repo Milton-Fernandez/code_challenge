@@ -20,7 +20,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import Book from '../Book/Book';
-
+import Review from '../Review/Review'
 import './App.css';
 
 function App() {
@@ -95,7 +95,13 @@ function App() {
           >
             <LandingPage />
           </ProtectedRoute>
+          <ProtectedRoute
+            exact
+            path="/review"
 
+          >
+            <Review />
+          </ProtectedRoute>
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>
             <h1>404</h1>

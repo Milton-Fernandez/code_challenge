@@ -28,7 +28,7 @@ const StarRating = () =>  {
                         onMouseLeave={()=> setHover(null)}
                         /></label>
                 })}
-               <p>The rating is :{rating}</p>
+               <p>The rating is {rating}</p>
             </div>
         </>
     )
