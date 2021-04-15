@@ -1,11 +1,6 @@
 import axios from 'axios'
 import React, {useState, useEffect} from 'react'
 import {useSelector} from 'react-redux';
-import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
-import Modal from 'react-bootstrap/Modal'
-import Form from 'react-bootstrap/Form'
-import StarRating from '../StarRating/StarRating'
 import "./Book.css";
 import SearchBox from '../SearchBox/SearchBox'
 import BookItem from '../BookItem/BookItem'

@@ -123,7 +123,7 @@ const ReviewTableRow = ({review}) =>{
 
 
 
-                <td><input type = "string" value = {comment} onChange={event => setComment(event.target.value)} ></input></td>
+                <td><textarea rows="4" cols="50" type = "string" value = {comment} onChange={event => setComment(event.target.value)} ></textarea></td>
                 </>
                 }
                     {!edit ?
@@ -133,11 +133,6 @@ const ReviewTableRow = ({review}) =>{
                         <Button   onClick={event => handleExit()}>Exit Edit</Button><br></br><br></br>
                         <Button onClick={editSubmit}>Save Changes</Button></td>
                         }
-                {/*
-                <td><Button variant="danger" onClick={() => {
-                        dispatch({ type: 'REMOVE_REVIEW', payload: review.id });
-                        dispatch({ type: 'FETCH_REVIEW' });}}>Delete</Button></td>
-                */}
                                 <td><Button variant="danger" value = {review.id} onClick={(event) => handleDelete(event.target.value)}>Delete</Button></td>
             </tr>
         </>

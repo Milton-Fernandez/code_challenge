@@ -36,13 +36,13 @@ const ReviewModal = (props) =>{
       centered
     >
                                              <form onSubmit={handleSubmit}>
-      <Modal.Header closeButton>
+      <Modal.Header >
         <Modal.Title id="contained-modal-title-vcenter">
-          Modal heading
+         Review
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h4>Centered Modal</h4>
+    
                                      
             <div>
                 <p>Rate</p>
@@ -65,9 +65,11 @@ const ReviewModal = (props) =>{
                         onMouseLeave={()=> setHover(null)}
                         /></label>
                 })}
-               <p>The rating is {rating}</p>
+              
             </div>
-                                          <input value={comment}  onChange={event => setComment(event.target.value)} ></input>
+            <br></br>
+            <p>Comment</p>
+                                          <textarea rows="4" cols="50" value={comment}  onChange={event => setComment(event.target.value)} ></textarea>
                                         
                                    
       </Modal.Body>
