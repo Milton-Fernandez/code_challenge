@@ -4,7 +4,7 @@ import { put, takeLatest,takeEvery } from 'redux-saga/effects';
 
 function* fetchReviewSaga(action){
     try{
-        let response = yield axios.get('/api/review');
+        let response = yield axios.get(`/api/review/${action.payload}`);
         yield put({type:'SET_REVIEW',payload:response.data});
        
     }catch (error){

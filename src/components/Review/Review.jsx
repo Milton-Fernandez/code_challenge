@@ -8,10 +8,12 @@ import ReviewTableRow from '../ReviewTableRow/ReviewTableRow'
 const Review = () =>{
 
     const review = useSelector((store) => store.review);
+    const user = useSelector((store) => store.user);
     const dispatch = useDispatch();
-    console.log(review)
+  
+    console.log('user id', user.id);
   useEffect(() => {
-    dispatch({ type: 'FETCH_REVIEW' });
+    dispatch({ type: 'FETCH_REVIEW', payload: user.id });
   },[]);
 
 

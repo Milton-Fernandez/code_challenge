@@ -39,7 +39,7 @@ const ReviewTableRow = ({review}) =>{
 
                 {!edit ?
                 <>
-                <td>{review.rating}</td>
+                <td>{review.rating}/5</td>
                 <td>{review.comment}</td>
                 </>
                 :
@@ -49,14 +49,16 @@ const ReviewTableRow = ({review}) =>{
                 </>
                 }
                     {!edit ?
-                        <td><Button onClick={event => handleEdit()} >edit</Button></td>
+                        <td><Button onClick={event => handleEdit()} >Edit</Button></td>
                         :
-                        <td><Button   onClick={event => handleExit()}>Exit Edit</Button><Button onClick={editSubmit}>Save Changes</Button></td>
+                        <td>
+                        <Button   onClick={event => handleExit()}>Exit Edit</Button><br></br><br></br>
+                        <Button onClick={editSubmit}>Save Changes</Button></td>
                         }
                 <td><Button onClick={() => {
                         console.log(review.id);
                         dispatch({ type: 'REMOVE_REVIEW', payload: review.id });
-                        dispatch({ type: 'FETCH_REVIEW' });}}>delete</Button></td>
+                        dispatch({ type: 'FETCH_REVIEW' });}}>Delete</Button></td>
             </tr>
         </>
     )

@@ -4,10 +4,11 @@ const { default: axios } = require('axios');
 
 const router = express.Router();
 
-router.get('/',(req,res) => {
+router.get('/:id',(req,res) => {
+    const id = req.params.id
     console.log('retrieving data');
-    const queryText = 'SELECT * FROM "review";';
-    pool.query(queryText).then(response =>{
+    const queryText = 'SELECT * FROM "review" where "user_id" = $1;';
+    pool.query(queryText,[id]).then(response =>{
         console.log('Retrieved all data');
         res.status(200).send(response.rows);
     }).catch(err => {
