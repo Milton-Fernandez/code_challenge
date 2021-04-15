@@ -68,7 +68,7 @@ const BookItem = ({book}) =>{
                 image: book.book_image,
             } 
         });
-
+        
         setComment('');
 
     }

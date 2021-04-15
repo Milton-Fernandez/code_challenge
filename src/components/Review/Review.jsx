@@ -22,6 +22,9 @@ const Review = () =>{
         <>
         <Container>
             <h2>Review</h2>
+            <p>Below is your personal review of each book. You are able to edit your comment and rating by
+                pressing on the edit button on the table. You are also able to delete your review by pressing delete.
+            </p>
             <br></br>
             <Table striped bordered hover>
                 <thead>

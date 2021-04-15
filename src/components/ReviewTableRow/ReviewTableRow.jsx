@@ -101,7 +101,7 @@ const ReviewTableRow = ({review}) =>{
                         <Button   onClick={event => handleExit()}>Exit Edit</Button><br></br><br></br>
                         <Button onClick={editSubmit}>Save Changes</Button></td>
                         }
-                <td><Button onClick={() => {
+                <td><Button variant="danger" onClick={() => {
                         console.log(review.id);
                         dispatch({ type: 'REMOVE_REVIEW', payload: review.id });
                         dispatch({ type: 'FETCH_REVIEW' });}}>Delete</Button></td>
