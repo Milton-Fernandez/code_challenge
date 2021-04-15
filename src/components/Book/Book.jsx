@@ -7,10 +7,13 @@ import Modal from 'react-bootstrap/Modal'
 import Form from 'react-bootstrap/Form'
 import StarRating from '../StarRating/StarRating'
 import "./Book.css";
+import SearchBox from '../SearchBox/SearchBox'
 import BookItem from '../BookItem/BookItem'
 import { useDispatch } from 'react-redux';
 
 const Book = () =>{
+
+
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(false);
     const [articles, setArticles] = useState([]);
@@ -20,29 +23,33 @@ const Book = () =>{
     const [modalShow, setModalShow] = React.useState(false);
     const [comment, setComment] = useState('');
     const code = useSelector((store) => store.code);
-    console.log(code[0].api);
+    
 
     useEffect(() => {
          dispatch({ type: 'FETCH_CODE'});
         const getArticles = async () => {
             setLoading(true);
-            //const res = await axios.get(`https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=nZwk50Bzk3GoGqGeejh1PfbxnmP5PdND`);
-            const res = await axios.get(`https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=${code[0].api}`);
+            const res = await axios.get(`https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=nZwk50Bzk3GoGqGeejh1PfbxnmP5PdND`);
+            //const res = await axios.get(`https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=${code[0].api}`);
             setArticles(res.data.results.books);
 
             setLoading(false);
         };
         getArticles();
-
+    
     }, []);
 
-    console.log(articles);
+     
     
     return(
         <>
        
         <div>
             <div class="container">
+              <form>
+              <SearchBox placeholder="Enter Title" handleChange={(e) => console.log(e.target.value)}/>
+              <button>Search</button>
+              </form>
                 <div class="row">
                 {articles.map((book)=>{
                     return(

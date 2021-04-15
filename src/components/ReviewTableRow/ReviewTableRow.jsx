@@ -4,7 +4,12 @@ import { useDispatch } from 'react-redux';
 import Container from 'react-bootstrap/Container'
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
+import StarRating from '../StarRating/StarRating'
+import {FaStar} from "react-icons/fa"
+import './ReviewTableRow.css';
 const ReviewTableRow = ({review}) =>{
+   
+    const [hover, setHover] = useState(null);
     const dispatch = useDispatch();
     const [edit, setEdit] = useState(false);
     const [rating,setRating] = useState(review.rating);
@@ -39,12 +44,53 @@ const ReviewTableRow = ({review}) =>{
 
                 {!edit ?
                 <>
-                <td>{review.rating}/5</td>
+                <td>                
+                    
+                    {[...Array(5)].map((star,i) =>{
+                    const ratingValue= i  + 1;
+
+                    return  <label>
+
+                        <FaStar 
+                        className="star" 
+                        size = {25} 
+                        color={ratingValue <= ( rating) ? "#ffc107":"#e4e5e9"}
+                        /></label>
+                })}
+                
+                
+                </td>
                 <td>{review.comment}</td>
                 </>
                 :
                 <>
-                <td><input type="number" value = {rating} onChange={event => setRating(event.target.value)}></input></td>
+
+
+
+                <td>                
+                    {[...Array(5)].map((star,i) =>{
+                    const ratingValue= i  + 1;
+
+                    return  <label>
+                        <input 
+                        type="radio" 
+                        name="rating" 
+                        value={ratingValue} 
+                        onClick={()=>setRating(ratingValue)}
+
+                        />
+                        <FaStar 
+                        className="star" 
+                        size = {25} 
+                        color={ratingValue <= (hover || rating) ? "#ffc107":"#e4e5e9"}
+                        onMouseEnter={() => setHover(ratingValue)}
+                        onMouseLeave={()=> setHover(null)}
+                        /></label>
+                })}</td>
+
+
+
+
                 <td><input type = "string" value = {comment} onChange={event => setComment(event.target.value)} ></input></td>
                 </>
                 }
