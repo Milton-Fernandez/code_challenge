@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, {useState, useEffect} from 'react'
+import {useSelector} from 'react-redux';
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
@@ -16,7 +17,8 @@ const Book = () =>{
     const handleShow = () => setShow(true);
     const [modalShow, setModalShow] = React.useState(false);
     const [comment, setComment] = useState('');
-
+    const code = useSelector((store) => store.code);
+    console.log(code);
 
     useEffect(() => {
         const getArticles = async () => {
