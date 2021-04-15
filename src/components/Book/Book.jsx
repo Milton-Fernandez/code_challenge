@@ -8,8 +8,10 @@ import Form from 'react-bootstrap/Form'
 import StarRating from '../StarRating/StarRating'
 import "./Book.css";
 import BookItem from '../BookItem/BookItem'
+import { useDispatch } from 'react-redux';
 
 const Book = () =>{
+    const dispatch = useDispatch();
     const [loading, setLoading] = useState(false);
     const [articles, setArticles] = useState([]);
     const [show, setShow] = useState(false);
@@ -18,12 +20,14 @@ const Book = () =>{
     const [modalShow, setModalShow] = React.useState(false);
     const [comment, setComment] = useState('');
     const code = useSelector((store) => store.code);
-    console.log(code);
+    console.log(code[0].api);
 
     useEffect(() => {
+         dispatch({ type: 'FETCH_CODE'});
         const getArticles = async () => {
             setLoading(true);
-            const res = await axios.get(`https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=nZwk50Bzk3GoGqGeejh1PfbxnmP5PdND`);
+            //const res = await axios.get(`https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=nZwk50Bzk3GoGqGeejh1PfbxnmP5PdND`);
+            const res = await axios.get(`https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=${code[0].api}`);
             setArticles(res.data.results.books);
 
             setLoading(false);
