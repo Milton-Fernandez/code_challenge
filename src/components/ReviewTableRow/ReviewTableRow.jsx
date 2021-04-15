@@ -6,6 +6,7 @@ import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
 import StarRating from '../StarRating/StarRating'
 import {FaStar} from "react-icons/fa"
+import swal from 'sweetalert';
 import './ReviewTableRow.css';
 const ReviewTableRow = ({review}) =>{
    
@@ -14,6 +15,11 @@ const ReviewTableRow = ({review}) =>{
     const [edit, setEdit] = useState(false);
     const [rating,setRating] = useState(review.rating);
     const [comment,setComment] = useState(review.comment);
+    const user = useSelector((store) => store.user);
+
+    useEffect(() => {
+        dispatch({ type: 'FETCH_REVIEW', payload: user.id });
+        },[]);
     const handleEdit = () =>{
         setEdit(true);
     }
@@ -32,7 +38,7 @@ const ReviewTableRow = ({review}) =>{
             comment: comment,
         }
         dispatch({type: 'UPDATE_REVIEW', payload: dataObj});
-        dispatch({ type: 'FETCH_REVIEW' });
+        dispatch({ type: 'FETCH_REVIEW', payload: user.id });
      
     }
     return(
@@ -102,7 +108,6 @@ const ReviewTableRow = ({review}) =>{
                         <Button onClick={editSubmit}>Save Changes</Button></td>
                         }
                 <td><Button variant="danger" onClick={() => {
-                        console.log(review.id);
                         dispatch({ type: 'REMOVE_REVIEW', payload: review.id });
                         dispatch({ type: 'FETCH_REVIEW' });}}>Delete</Button></td>
             </tr>
