@@ -41,6 +41,32 @@ const ReviewTableRow = ({review}) =>{
         dispatch({ type: 'FETCH_REVIEW', payload: user.id });
      
     }
+
+    const handleDelete = (id) => {
+        console.log(id);
+
+        swal({
+  title: "Are you sure?",
+  text: "Once deleted, you will not be able to recover this review!",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+})
+.then((willDelete) => {
+  if (willDelete) {
+    dispatch({ type: 'REMOVE_REVIEW', payload: review.id });
+    dispatch({ type: 'FETCH_REVIEW', payload: user.id });
+    swal("Poof! Your review has been deleted!", {
+      icon: "success",
+    });
+  } else {
+    swal("Your review is safe!");
+  }
+});
+    }
+
+
+
     return(
         <>
             <tr>
@@ -107,9 +133,12 @@ const ReviewTableRow = ({review}) =>{
                         <Button   onClick={event => handleExit()}>Exit Edit</Button><br></br><br></br>
                         <Button onClick={editSubmit}>Save Changes</Button></td>
                         }
+                {/*
                 <td><Button variant="danger" onClick={() => {
                         dispatch({ type: 'REMOVE_REVIEW', payload: review.id });
                         dispatch({ type: 'FETCH_REVIEW' });}}>Delete</Button></td>
+                */}
+                                <td><Button variant="danger" value = {review.id} onClick={(event) => handleDelete(event.target.value)}>Delete</Button></td>
             </tr>
         </>
     )
