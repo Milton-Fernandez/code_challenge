@@ -7,8 +7,8 @@ function UserPage() {
   return (
     <div className="container">
       <h2>Welcome, {user.username}!</h2>
-      <p>Below is a list of the New York Time's Bestsellers. You are able to rate and comment each book. To view your reviews of each book, press 
-        on the review tab on the right corner of the nav bar.
+      <p>Below is a list of the New York Time's Bestsellers. You are able to rate and comment each book by clicking on the review button. 
+        To view your reviews, press on the review tab on the right corner of the nav bar.
       </p>
 
       <Book />

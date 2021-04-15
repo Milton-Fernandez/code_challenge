@@ -130,7 +130,7 @@ const ReviewTableRow = ({review}) =>{
                         <td><Button onClick={event => handleEdit()} >Edit</Button></td>
                         :
                         <td>
-                        <Button   onClick={event => handleExit()}>Exit Edit</Button><br></br><br></br>
+                        <Button variant="warning"  onClick={event => handleExit()}>Exit Edit</Button><br></br><br></br>
                         <Button onClick={editSubmit}>Save Changes</Button></td>
                         }
                                 <td><Button variant="danger" value = {review.id} onClick={(event) => handleDelete(event.target.value)}>Delete</Button></td>
