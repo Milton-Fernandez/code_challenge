@@ -8,6 +8,9 @@ Before you get started, make sure you have the following software installed on y
 - [PostrgeSQL](https://www.postgresql.org/)
 - [Nodemon](https://nodemon.io/)
 
+## API Key
+Create a env file to hold api field
+
 ## Create database and table
 
 Create a new database called `book` and create a `user`,`review`,and `nyt_api` table:
@@ -39,7 +42,7 @@ CREATE TABLE "review" (
 
 - Run `npm install`
 
--Run `npm run server` and `npm run client` to get the program to run on DOM
+- Run `npm run server` and `npm run client` to get the program to run on DOM
 
 
 

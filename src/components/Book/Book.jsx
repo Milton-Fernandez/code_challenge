@@ -20,6 +20,10 @@ const Book = () =>{
     const code = useSelector((store) => store.code);
     const [searchTerm, setSearchTerm ] = useState("");
     const [searchResults,setSearchResult] = useState([]);
+
+
+
+    
   //pulls data on page load
     useEffect(() => {
          dispatch({ type: 'FETCH_CODE'});
@@ -36,19 +40,6 @@ const Book = () =>{
     
     }, []);
 
-
-  
-
-    console.log('code',code);
-    function api(){
-        if(code.length==0){
-            console.log('undefined');
-        }
-        else if(code.length != 0){
-            
-        }
-    }
-    api();
     //function use in search input
     const searchHandler = (searchTerm) =>{
         setSearchTerm(searchTerm);
