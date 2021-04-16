@@ -39,6 +39,7 @@ const BookItem = (props) =>{
                                     <Card.Body>
                                         <Card.Title className="book-name">{props.book.title}</Card.Title>
                                             <Card.Text>
+                                            <p><strong>Rank: {props.book.rank}</strong></p>
                                             <p><strong>Author:</strong></p>
                                             {props.book.author}
                                             <p><strong>Description:</strong></p>

@@ -20,7 +20,7 @@ const Book = () =>{
     const code = useSelector((store) => store.code);
     const [searchTerm, setSearchTerm ] = useState("");
     const [searchResults,setSearchResult] = useState([]);
-
+  
     useEffect(() => {
          dispatch({ type: 'FETCH_CODE'});
         const getArticles = async () => {
@@ -61,8 +61,8 @@ const Book = () =>{
        
         <div>
             <div class="container">
-             
-              <input ref={inputEl} type="text" value={searchTerm} onChange={getSearchTerm}></input>
+         
+              <input ref={inputEl} size="40" type="text" value={searchTerm} onChange={getSearchTerm} placeholder="Search by title, author, etc."></input>
  
                 <div class="row">
 
