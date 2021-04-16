@@ -27,7 +27,7 @@ const Book = () =>{
         
         const getArticles = async () => {
             setLoading(true);
-            const res = await axios.get(`https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=nZwk50Bzk3GoGqGeejh1PfbxnmP5PdND`);
+            const res = await axios.get(`https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=${process.env.REACT_APP_API_KEY}`);
             setArticles(res.data.results.books);
 
             setLoading(false);

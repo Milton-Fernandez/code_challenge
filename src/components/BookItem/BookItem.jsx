@@ -6,7 +6,6 @@ import { useDispatch } from 'react-redux';
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
-import StarRating from '../StarRating/StarRating'
 import swal from 'sweetalert';
 import './BookItem.css'
 import ReviewModal from '../ReviewModal/ReviewModal'

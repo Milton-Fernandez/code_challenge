@@ -13,7 +13,7 @@ import Nav from '../Nav/Nav';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
-
+require('dotenv').config()
 import UserPage from '../UserPage/UserPage';
 
 import LandingPage from '../LandingPage/LandingPage';

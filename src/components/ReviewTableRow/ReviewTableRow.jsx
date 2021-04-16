@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import Container from 'react-bootstrap/Container'
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
-import StarRating from '../StarRating/StarRating'
 import {FaStar} from "react-icons/fa"
 import swal from 'sweetalert';
 import './ReviewTableRow.css';
