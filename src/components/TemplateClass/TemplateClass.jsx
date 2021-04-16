@@ -12,6 +12,7 @@ import { connect } from 'react-redux';
 class TemplateClass extends Component {
   state = {
     heading: 'Class Component',
+    
   };
 
   render() {
