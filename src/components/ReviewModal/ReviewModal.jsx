@@ -3,6 +3,8 @@ import Button from 'react-bootstrap/Button'
 import {useSelector} from 'react-redux';
 import {FaStar} from "react-icons/fa"
 import React, {useState, useEffect} from 'react'
+import swal from 'sweetalert';
+
 import { useDispatch } from 'react-redux';
 const ReviewModal = (props) =>{
       const [rating, setRating] = useState(null);
@@ -24,6 +26,7 @@ const ReviewModal = (props) =>{
                 image: props.book.book_image,
             } 
         });
+        swal("Review Submitted!", "Review sent to Review Tab", "success");
         props.onHide()
         setComment('');
 
