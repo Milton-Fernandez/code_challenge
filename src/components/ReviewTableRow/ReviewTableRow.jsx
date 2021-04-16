@@ -43,7 +43,7 @@ const ReviewTableRow = ({review}) =>{
     }
 
     const handleDelete = (id) => {
-        console.log(id);
+    
 
         swal({
   title: "Are you sure?",

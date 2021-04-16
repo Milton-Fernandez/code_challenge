@@ -14,7 +14,7 @@ import ReviewModal from '../ReviewModal/ReviewModal'
 
 
 
-const BookItem = ({book}) =>{
+const BookItem = (props) =>{
     const [rating, setRating] = useState(null);
     const [hover, setHover] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -32,17 +32,17 @@ const BookItem = ({book}) =>{
 
     return(
         <>
-                        <div class="col-sm" id="d" id = {book.rank}>
+                        <div class="col-sm" id="d" id = {props.book.rank}>
 
                             <Card style={{ width: '18rem' }}>
-                                <Card.Img variant="top" src={book.book_image} />
+                                <Card.Img variant="top" src={props.book.book_image} />
                                     <Card.Body>
-                                        <Card.Title>{book.title}</Card.Title>
+                                        <Card.Title className="book-name">{props.book.title}</Card.Title>
                                             <Card.Text>
                                             <p><strong>Author:</strong></p>
-                                            {book.author}
+                                            {props.book.author}
                                             <p><strong>Description:</strong></p>
-                                            {book.description}
+                                            {props.book.description}
                                             </Card.Text>
 
 
@@ -53,7 +53,7 @@ const BookItem = ({book}) =>{
       <ReviewModal
         show={modalShow}
         onHide={() => setModalShow(false)}
-        book = {book}
+        book = {props.book}
       />
 
 

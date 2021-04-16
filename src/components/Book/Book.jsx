@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect,useRef} from 'react'
 import {useSelector} from 'react-redux';
 import "./Book.css";
 import SearchBox from '../SearchBox/SearchBox'
@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 
 const Book = () =>{
 
-
+    const inputEl = useRef("");
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(false);
     const [articles, setArticles] = useState([]);
@@ -18,7 +18,8 @@ const Book = () =>{
     const [modalShow, setModalShow] = React.useState(false);
     const [comment, setComment] = useState('');
     const code = useSelector((store) => store.code);
-    
+    const [searchTerm, setSearchTerm ] = useState("");
+    const [searchResults,setSearchResult] = useState([]);
 
     useEffect(() => {
          dispatch({ type: 'FETCH_CODE'});
@@ -34,24 +35,62 @@ const Book = () =>{
     
     }, []);
 
+    const searchHandler = (searchTerm) =>{
+        setSearchTerm(searchTerm);
+        if(searchTerm !==""){
+            const newBookList = articles.filter((article)=>{
+              return Object.values(article).join(" ").toLowerCase().includes(searchTerm.toLowerCase());
+            })
+            setSearchResult(newBookList);
+        }
+        else{
+            setSearchResult(articles);
+        }
+        }
+
+    
+
      
+    const getSearchTerm = () =>{
+   
+        searchHandler(inputEl.current.value);
+    }
     
     return(
         <>
        
         <div>
             <div class="container">
-              <form>
-              <SearchBox placeholder="Enter Title" handleChange={(e) => console.log(e.target.value)}/>
-              <button>Search</button>
-              </form>
+             
+              <input ref={inputEl} type="text" value={searchTerm} onChange={getSearchTerm}></input>
+ 
                 <div class="row">
-                {articles.map((book)=>{
+
+                    
+                { 
+                searchTerm.length<1?
+            
+                articles.map((book)=>{
                     return(
                       <>
-                            <BookItem book={book} />
+                            <BookItem term={searchTerm} book={book} 
+                            searchKeyword={searchHandler}
+                            />
                         </>
-                        )})}
+                        )})
+                    
+                        :
+
+                          searchResults.map((book)=>{
+                    return(
+                      <>
+                            <BookItem term={searchTerm} book={book} 
+                            searchKeyword={searchHandler}
+                            />
+                        </>
+                        )})             
+                        
+                        }
                 </div>
             </div>
         </div>
