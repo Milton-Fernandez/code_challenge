@@ -3,9 +3,11 @@ const pool = require('../modules/pool');
 const { default: axios } = require('axios');
 
 const router = express.Router();
+const {
+  rejectUnauthenticated,
+} = require('../modules/authentication-middleware');
 
-
-router.get('/',(req,res) => {
+router.get('/',rejectUnauthenticated,(req,res) => {
     console.log('retrieving data');
     const queryText = 'SELECT * FROM "nyt_api";';
     pool.query(queryText).then(response =>{

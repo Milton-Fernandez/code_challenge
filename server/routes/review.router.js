@@ -4,7 +4,11 @@ const { default: axios } = require('axios');
 
 const router = express.Router();
 
-router.get('/:id',(req,res) => {
+const {
+    rejectUnauthenticated,
+} = require('../modules/authentication-middleware');
+
+router.get('/:id',rejectUnauthenticated,(req,res) => {
     const id = req.params.id
     console.log('retrieving data');
     const queryText = 'SELECT * FROM "review" where "user_id" = $1;';
@@ -17,7 +21,7 @@ router.get('/:id',(req,res) => {
     });
 });
 
-router.post('/add',(req,res) =>{
+router.post('/add',rejectUnauthenticated,(req,res) =>{
     console.log('Adding data');
     const data = req.body;
     const queryText = `INSERT INTO "review" ("user_id","comment","rating","image","title","author") VALUES ($1,$2,$3,$4,$5,$6); ` ;
@@ -33,7 +37,7 @@ router.post('/add',(req,res) =>{
 
 
 
-router.delete('/delete/:id', (req, res) => {
+router.delete('/delete/:id',rejectUnauthenticated, (req, res) => {
     const id = req.params.id
     console.log('Deleting data at id:', id);
     const queryText = `DELETE FROM "review" WHERE "id" = $1;`;
@@ -47,7 +51,7 @@ router.delete('/delete/:id', (req, res) => {
     });
 });
 
-router.put('/update/:id', (req,res) =>{
+router.put('/update/:id',rejectUnauthenticated, (req,res) =>{
     const data = req.body;
     const query = `UPDATE "review" SET "rating" = $1, "comment" = $2
     WHERE "id" = $3 ;`;

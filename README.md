@@ -13,7 +13,7 @@ Create a env file to hold api field
 
 ## Create database and table
 
-Create a new database called `book` and create a `user`,`review`,and `nyt_api` table:
+Create a new database called `book` and create a `user` and `review` table:
 
 ```SQL
 CREATE TABLE "user" (
