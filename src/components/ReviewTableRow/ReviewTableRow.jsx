@@ -23,12 +23,12 @@ const ReviewTableRow = ({review}) =>{
     const handleEdit = () =>{
         setEdit(true);
     }
-
+//function used to exit edit
     const handleExit = () =>{
         setEdit(false);
     }
 
-
+    //handles edit button, allows user to edit rating and comment
     const editSubmit = () =>{
         setEdit(false);
 
@@ -41,7 +41,7 @@ const ReviewTableRow = ({review}) =>{
         dispatch({ type: 'FETCH_REVIEW', payload: user.id });
      
     }
-
+    //function used to delete review from review table
     const handleDelete = (id) => {
     
 

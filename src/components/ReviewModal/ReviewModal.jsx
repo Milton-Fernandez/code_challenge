@@ -10,6 +10,7 @@ const ReviewModal = (props) =>{
         const [comment, setComment] = useState('');
          const dispatch = useDispatch();
            const user = useSelector((store) => store.user);
+           //dispatches new review to backend
             const handleSubmit = (event) =>{
         event.preventDefault();
         dispatch({

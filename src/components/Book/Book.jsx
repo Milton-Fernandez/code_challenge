@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, {useState, useEffect,useRef} from 'react'
 import {useSelector} from 'react-redux';
 import "./Book.css";
-import SearchBox from '../SearchBox/SearchBox'
+
 import BookItem from '../BookItem/BookItem'
 import { useDispatch } from 'react-redux';
 
@@ -20,7 +20,7 @@ const Book = () =>{
     const code = useSelector((store) => store.code);
     const [searchTerm, setSearchTerm ] = useState("");
     const [searchResults,setSearchResult] = useState([]);
-  
+  //pulls data on page load
     useEffect(() => {
          dispatch({ type: 'FETCH_CODE'});
         const getArticles = async () => {
@@ -34,7 +34,16 @@ const Book = () =>{
         getArticles();
     
     }, []);
+    const api = () => {
+        //if(code[0].api === undefined){
+          //  console.log(hello);
+        //}
+       // else{console.log(code[0].api);}
 
+    }
+    console.log(code);
+
+    //function use in search input
     const searchHandler = (searchTerm) =>{
         setSearchTerm(searchTerm);
         if(searchTerm !==""){
@@ -62,7 +71,7 @@ const Book = () =>{
         <div>
             <div class="container">
          
-              <input ref={inputEl} size="40" type="text" value={searchTerm} onChange={getSearchTerm} placeholder="Search by title, author, etc."></input>
+              <input ref={inputEl} size="40" type="text" value={searchTerm} onChange={getSearchTerm} placeholder="Search by title, author, description"></input>
  
                 <div class="row">
 
