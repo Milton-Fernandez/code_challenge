@@ -23,8 +23,8 @@ const Book = () =>{
 
 
 
-    
-  //pulls data on page load
+
+  //pulls data for New York Time Bestsellers using api key on page load
     useEffect(() => {
          dispatch({ type: 'FETCH_CODE'});
           
@@ -56,7 +56,7 @@ const Book = () =>{
 
     
 
-     
+     // fuction used to get user input for searching data source
     const getSearchTerm = () =>{
    
         searchHandler(inputEl.current.value);

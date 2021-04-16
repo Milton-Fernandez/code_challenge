@@ -12,7 +12,7 @@ const ReviewModal = (props) =>{
         const [comment, setComment] = useState('');
          const dispatch = useDispatch();
            const user = useSelector((store) => store.user);
-           //dispatches new review to backend
+           //dispatches new review to backend 
             const handleSubmit = (event) =>{
         event.preventDefault();
         dispatch({
@@ -26,6 +26,7 @@ const ReviewModal = (props) =>{
                 image: props.book.book_image,
             } 
         });
+        //alerts user that their review has been updated 
         swal("Review Submitted!", "Review sent to Review Tab", "success");
         props.onHide()
         setComment('');

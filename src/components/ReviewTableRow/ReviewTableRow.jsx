@@ -22,7 +22,7 @@ const ReviewTableRow = ({review}) =>{
     const handleEdit = () =>{
         setEdit(true);
     }
-//function used to exit edit
+    //function used to exit edit
     const handleExit = () =>{
         setEdit(false);
     }
@@ -40,7 +40,7 @@ const ReviewTableRow = ({review}) =>{
         dispatch({ type: 'FETCH_REVIEW', payload: user.id });
      
     }
-    //function used to delete review from review table
+    //function used to delete a review from review table
     const handleDelete = (id) => {
     
 
