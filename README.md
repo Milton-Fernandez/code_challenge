@@ -29,10 +29,7 @@ CREATE TABLE "review" (
     "author" VARCHAR (250)  NOT NULL
 	);
 
-CREATE TABLE "nyt_api"(
-		"id" SERIAL PRIMARY KEY,
-		"api" VARCHAR (250) NOT NULL
-		);
+
 
 
 ```

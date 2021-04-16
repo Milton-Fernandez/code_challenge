@@ -23,10 +23,11 @@ const Book = () =>{
   //pulls data on page load
     useEffect(() => {
          dispatch({ type: 'FETCH_CODE'});
+          
+        
         const getArticles = async () => {
             setLoading(true);
             const res = await axios.get(`https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=nZwk50Bzk3GoGqGeejh1PfbxnmP5PdND`);
-            //const res = await axios.get(`https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=${code[0].api}`);
             setArticles(res.data.results.books);
 
             setLoading(false);
@@ -34,15 +35,20 @@ const Book = () =>{
         getArticles();
     
     }, []);
-    const api = () => {
-        //if(code[0].api === undefined){
-          //  console.log(hello);
-        //}
-       // else{console.log(code[0].api);}
 
+
+  
+
+    console.log('code',code);
+    function api(){
+        if(code.length==0){
+            console.log('undefined');
+        }
+        else if(code.length != 0){
+            
+        }
     }
-    console.log(code);
-
+    api();
     //function use in search input
     const searchHandler = (searchTerm) =>{
         setSearchTerm(searchTerm);
