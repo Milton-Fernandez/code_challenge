@@ -73,7 +73,7 @@ const ReviewModal = (props) =>{
             </div>
             <br></br>
             <p>Comment</p>
-                                          <textarea required rows="4" cols="50" value={comment}  onChange={event => setComment(event.target.value)} ></textarea>
+                                          <textarea required rows="4" cols="50" maxlength = "250"  value={comment}  onChange={event => setComment(event.target.value)} ></textarea>
                                         
                                    
       </Modal.Body>

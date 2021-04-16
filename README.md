@@ -1,4 +1,16 @@
-
+## Requirements
+Create an Api (server) that can communicate with the selected data source
+    a. End-point authentication
+    b. must support searching the data source
+    c. support a "rating system"(CRUD)
+    d support a comment system(CRUD)
+Create user interface that can display cotent from the data source
+    a. authenitcation(username/password)
+    b. should allow user to search the data source
+    c. should allow user to "rate" a data item(CRUD)
+    d. should allow user to comment (CRUD)
+    
+I used the New York Times Books(apiKey) for this code challenge
 
 ## Prerequisites
 
